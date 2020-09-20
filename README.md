@@ -23,7 +23,7 @@ Use cases are implemented in files: (1)statefull.v (2)ndp48.v (3)ndpqs.v (4)meas
 
 The SA-based heuristic algorithm is following the processing graph below.
 
-![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/saprocess.png)
+![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/Saprocess2.jpg)
 
 The algorithm is implemented in heuristic.py file.
 

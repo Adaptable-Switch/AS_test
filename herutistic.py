@@ -4,10 +4,17 @@ import random
 import math
 import sys
 import copy
+
+
 # parameter define
 num_pipeline = 8
+
 num_id = 256
+
 TIME_LIMIT = 20 #limit heuristic algorithm running time to TIME_LIMIT seconds
+
+Pmax = 5000 #maximum processing performance of one EE, this can be re-defined by any end users, according to the hardware spec.
+
 
 # the traffic volume of each flow set, which can be changed.
 # users can use their own data sets for doing more evaluation.
@@ -25,6 +32,12 @@ load = [988 , 988 , 984 , 983 , 982 , 981 , 975 , 973 , 970 , 968 , 966 , 962 , 
 148 , 142 , 140 , 139 , 139 , 130 , 129 , 128 , 127 , 125 , 119 , 108 , 103 , 98 , 91 , 89 , 81 , 72 , 67 , 65 , 62 , \
 58 , 57 , 57 , 55 , 54 , 54 , 54 , 37 , 36 , 33 , 30 , 30 , 19 , 16 , 15 , 5 , 4]
 
+## the diction "duplica" is to store the duplication information, 
+## e.g. duplica['18'] = [256,257,258], 
+## this means that the flow group 18 is duplicated to 4 replica, 
+## these 4 replica is stored in the location of '18,256,257,258' in the 'load' list.
+duplica = {}
+
 # A example of real traffic LTE.
 realload = [5297,13160,6698,4638,3588,2584,3959,3652,7981,3543,2657,2458,2467,5199,2797,3052,2698,4827,3120,3822,2945,\
 3667,2632,2276,4997,3475,1315,3168,2574,3419,3001,9353,3794,5412,2442,4036,2796,2663,3662,5292,2538,1844,3476,4596,2574,\
@@ -41,9 +54,11 @@ realload = [5297,13160,6698,4638,3588,2584,3959,3652,7981,3543,2657,2458,2467,51
 # Generate a load set for testing.
 def gen_random_load():
 	load = []
+	
 	for i in range(num_id):
 		a = int(random.random() * 1000)
 		load.append(a)
+		
 	for j in load:
 		print j,",",
 	print "-------------"
@@ -56,12 +71,14 @@ def J(Y0):
 	l = len(Y0)
 	a = []
 	suma = []
+	
 	for i in range(l):
 		a.append(Y0[i])
 		suma.append(sum(a[i]))
 	# print "J()",a,b,c,d
 	avg = (sum(suma))/l
 	err = 0
+	
 	for i in range(l):
 		err = err + (avg - suma[i])*(avg - suma[i])
 	err = err
@@ -74,6 +91,7 @@ def find_min_list(intputlist):
 	l = len(intputlist)
 	flag = 1
 	out = 0
+	
 	for i in range(l):
 		if flag:
 			minn =i
@@ -85,32 +103,97 @@ def find_min_list(intputlist):
 
 ########################################## heuristic: init
 def init_real():
-	a = []
-	summ = []
-	each = num_id / num_pipeline
-	for i in range(num_pipeline):
-		a.append([])
-		summ.append([])
-	for i in realload:
-		for i in range(summ):
-			summ[i] = sum(a[i])
+
+	for i in load:
+		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+			temp = Pmax
+			N = 0      # N is to indecate the number of replica.
+			while True:
+				N = N + 1
+				temp = temp / N
+				if temp < Pmax:
+					break
+				else:
+					temp = temp * N
+		num_last_list = len(load)
+		traffic = load[i] / N
+		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+		for j in range(N):
+			load.append(traffic)
+			diction.append(num_last_list)
+			num_last_list = num_last_list + 1
+			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+
+  a = []
+  summ = []
+  each = num_id / num_pipeline
+
+
+
+  for i in range(num_pipeline):
+    a.append([])
+    summ.append([])
+
+  for i in realload:
+    for i in range(summ):
+      summ[i] = sum(a[i])
 
 def init_without_opt(num_pipeline):
-	a = []
 
-	each = num_id / num_pipeline#64
+		for i in load:
+		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+			temp = Pmax
+			N = 0      # N is to indecate the number of replica.
+			while True:
+				N = N + 1
+				temp = temp / N
+				if temp < Pmax:
+					break
+				else:
+					temp = temp * N
+		num_last_list = len(load)
+		traffic = load[i] / N
+		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+		for j in range(N):
+			load.append(traffic)
+			diction.append(num_last_list)
+			num_last_list = num_last_list + 1
+			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+  a = []
 
-	for i in range(num_pipeline):
-		a.append(load[each*i:each*i+each])
-	return a
+  each = num_id / num_pipeline#64
+
+  for i in range(num_pipeline):
+    a.append(load[each*i:each*i+each])
+  return a
 
 def init_without_opt_real(num_pipeline):
-	a = []
-	each = num_id / num_pipeline#64
-	# print "len real",len(realload)
-	for i in range(num_pipeline):
-		a.append(realload[each*i:each*i+each])
-	return a
+
+		for i in load:
+		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+			temp = Pmax
+			N = 0      # N is to indecate the number of replica.
+			while True:
+				N = N + 1
+				temp = temp / N
+				if temp < Pmax:
+					break
+				else:
+					temp = temp * N
+		num_last_list = len(load)
+		traffic = load[i] / N
+		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+		for j in range(N):
+			load.append(traffic)
+			diction.append(num_last_list)
+			num_last_list = num_last_list + 1
+			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+  a = []
+  each = num_id / num_pipeline#64
+  # print "len real",len(realload)
+  for i in range(num_pipeline):
+    a.append(realload[each*i:each*i+each])
+  return a
 ########################################## heuristic: init
 
 
@@ -142,6 +225,7 @@ def run(num_pipeline,errbar):#############     input: 2) the balancing tolerance
 	timernow = time.clock()
 	running_time = timernow - timerstart
 	average = sum(realload)/num_pipeline
+	
 	while err > errbar and running_time < TIME_LIMIT:
 		timernow = time.clock()
 		running_time = timernow - timerstart

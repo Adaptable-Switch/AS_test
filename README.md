@@ -6,7 +6,7 @@
 
 In HDL folder, it's hardware design VHDL code files, as figure below shown.
 
-![image](https://github.com/qiaosiyi/qiaosiyi.github.io/blob/master/figs/bpu2.jpg)
+![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/bpu2.jpg)
 
 An opensourced packet generator can be find in the project of [PacketGenerator](https://github.com/NetFPGA/netfpga/wiki/PacketGenerator), the packet data can be read from PCAP files.
 
@@ -23,7 +23,7 @@ Use cases are implemented in files: (1)statefull.v (2)ndp48.v (3)ndpqs.v (4)meas
 
 The SA-based heuristic algorithm is following the processing graph below.
 
-![image](https://github.com/qiaosiyi/qiaosiyi.github.io/blob/master/figs/saprocess.png)
+![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/saprocess.png)
 
 The algorithm is implemented in heuristic.py file.
 

@@ -35,7 +35,7 @@ The different group distribution contained in the EE generate the total traffic 
 
 ### 2.1.The initialization of the SA algorithm.
 
-a) Check if there is a ![](https://render.githubusercontent.com/render/math?math=D\\_{id}[j]) that exceeds the ![](https://render.githubusercontent.com/render/math?math=P_{max}), it need to duplicate into ![](https://render.githubusercontent.com/render/math?math=N) copies (![](https://render.githubusercontent.com/render/math?math=N\leq{K})) and put them on different EE. The throughput demand of each sub-group ![](https://render.githubusercontent.com/render/math?math={\dfrac{1}{2}}).
+a) Check if there is a ![](https://render.githubusercontent.com/render/math?math=D\\_{id}[j]) that exceeds the ![](https://render.githubusercontent.com/render/math?math=P_{max}), it need to duplicate into ![](https://render.githubusercontent.com/render/math?math=N) copies (![](https://render.githubusercontent.com/render/math?math=N\leq{K})) and put them on different EE. The throughput demand of each sub-group ![](https://render.githubusercontent.com/render/math?math={\dfrac{D\\_{id}[j]}{N}}\leq{P}).
 
 b) Randomly distribute the ![](https://render.githubusercontent.com/render/math?math=G\\_{id}[j]) and duplicated repeated combinations into ![](https://render.githubusercontent.com/render/math?math=K) sets to form an initial solution ![](https://render.githubusercontent.com/render/math?math=w).
 

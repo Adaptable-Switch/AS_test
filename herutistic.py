@@ -15,6 +15,11 @@ TIME_LIMIT = 20 #limit heuristic algorithm running time to TIME_LIMIT seconds
 
 Pmax = 5000 #maximum processing performance of one EE, this can be re-defined by any end users, according to the hardware spec.
 
+# The local search looks for a more balanced solution by searching the allocation of flows in each group, within a bit more of 
+# the neighboring space, while the global search allows \textcolor{red}{researching} with a random walk in the entire space with 
+# a small probability, in order to avoid local search trap.
+Prandomwalk = 0.000001 
+
 
 # the traffic volume of each flow set, which can be changed.
 # users can use their own data sets for doing more evaluation.
@@ -217,7 +222,7 @@ def get_2_groupID(num_pipeline):
 ##########################################     input: 1) the number of paralleled Execut Engines.
 def run(num_pipeline,errbar):#############     input: 2) the balancing tolerance, for example 10% or 5%.
 	Y = init_without_opt_real(num_pipeline)#     output:1) the table allocation solution.
-	Yp1 = copy.deepcopy(Y) 
+	Yp1 = copy.deepcopy(Y)                 #           :2) the running time durition, indecated in seconds.
 	jmin = 9999999999999
 	times = 0
 	err = 1
@@ -237,7 +242,7 @@ def run(num_pipeline,errbar):#############     input: 2) the balancing tolerance
 		j0 = J(Y)
 		j1 = J(Yp1)
 		de = j0 - j1
-		if de > 0 :
+		if de > 0  or ptemp < Prandomwalk:
 			Y = copy.deepcopy(Yp1)
 			jmin = j1
 			sum1 = []

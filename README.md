@@ -6,7 +6,7 @@
 
 In HDL folder, it's hardware design VHDL code files, as figure below shown.
 
-![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/bpu4.png)
+![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/bpu5.png)
 
 An opensourced packet generator can be find in the project of [PacketGenerator](https://github.com/NetFPGA/netfpga/wiki/PacketGenerator), the packet data is read from PCAP files.
 

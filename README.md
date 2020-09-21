@@ -37,7 +37,7 @@ The different group distribution contained in the EE generate the total traffic 
 
 ### 2.1.The initialization of the SA algorithm.
 
-a) Give a result of flows spliting by an HASH function, which can be specified by end users.
+a) Give a result of flows spliting by any HASH function, which also can be specified by end users. Without loss of generality，we just chose one example result to do our software test.
 
 b) Check if there is a ![](https://render.githubusercontent.com/render/math?math=D\\_{id}[j]) that exceeds the ![](https://render.githubusercontent.com/render/math?math=P_{max}), it need to duplicate into ![](https://render.githubusercontent.com/render/math?math=N) copies (![](https://render.githubusercontent.com/render/math?math=N\leq{K})) and put them on different EE. The throughput demand of each sub-group ![](https://render.githubusercontent.com/render/math?math={\dfrac{D\\_{id}[j]}{N}}\leq{P_{max}}).
 

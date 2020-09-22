@@ -1,6 +1,6 @@
 # Appendix
 
-##Terminology and Definition:
+## Terminology and Definition:
 
 ![](https://render.githubusercontent.com/render/math?math=ID)
 
@@ -26,7 +26,7 @@ Therefore,
 
 If more than one extended sub rules be allocated into the same ![](https://render.githubusercontent.com/render/math?math=Q_k), we can remerging these rules into one rule by just changing the different bits to a mask "![](https://render.githubusercontent.com/render/math?math=\ast)". We note the number of compressed sub rules as ![](https://render.githubusercontent.com/render/math?math=V_k). Then optimization problem is given by **The Load-Balance-Based Table Construction Problem** .
 
-####Subject To.
+#### Subject To.
 
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=Q_k\subseteq{S},k\in[1,k],\cup{Q_k}=S,N\leq\sum^{K}_{k=1}C_k\leq{C_0}\cdot{R_d})
  
@@ -44,7 +44,7 @@ If more than one extended sub rules be allocated into the same ![](https://rende
 
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=F_2[k]=C_0-\sum^{K}_{k=1}V_k\leq{q_2})
 
-####Minimize a Pareto function:
+#### Minimize a Pareto function:
 
 &emsp;&emsp;![](https://render.githubusercontent.com/render/math?math=F[k]=(F_1[k],F_2[k])) ![](https://render.githubusercontent.com/render/math?math=k\in[1,K])
    

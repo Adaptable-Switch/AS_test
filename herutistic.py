@@ -21,8 +21,8 @@ Pmax = 5000 #maximum processing performance of one EE, this can be re-defined by
 Prandomwalk = 0.000001 
 
 
-# the traffic volume of each flow set, which can be changed.
-# users can use their own data sets for doing more evaluation.
+# A example for testing: the traffic volume of each flow set, which can be changed in run-time.
+# Users can use their own data sets for doing more evaluation.
 load = [988 , 988 , 984 , 983 , 982 , 981 , 975 , 973 , 970 , 968 , 966 , 962 , 948 , 946 , 944 , 936 , 933 , 931 , \
 926 , 918 , 917 , 914 , 912 , 908 , 908 , 908 , 906 , 899 , 897 , 895 , 893 , 884 , 883 , 875 , 872 , 869 , 867 , 864 , \
 858 , 850 , 850 , 841 , 839 , 831 , 829 , 816 , 812 , 811 , 798 , 798 , 791 , 784 , 784 , 778 , 776 , 775 , 770 , 764 , \
@@ -43,7 +43,7 @@ load = [988 , 988 , 984 , 983 , 982 , 981 , 975 , 973 , 970 , 968 , 966 , 962 , 
 ## these 4 replica is stored in the location of '18,256,257,258' in the 'load' list.
 duplica = {}
 
-# A example of real traffic LTE.
+# A example of real traffic of LTE trace.
 realload = [5297,13160,6698,4638,3588,2584,3959,3652,7981,3543,2657,2458,2467,5199,2797,3052,2698,4827,3120,3822,2945,\
 3667,2632,2276,4997,3475,1315,3168,2574,3419,3001,9353,3794,5412,2442,4036,2796,2663,3662,5292,2538,1844,3476,4596,2574,\
 13857,4720,4283,2326,5817,5147,7982,13291,3490,4729,4769,2576,2111,8983,4622,4614,3437,10158,2999,4381,2765,4469,9393,\

@@ -23,7 +23,7 @@ Use cases are implemented in files: (1)statefull.v (2)ndp48.v (3)ndpqs.v (4)meas
 
 ## 2.Software Design.
 
-The SA-based heuristic algorithm is implemented in heuristic.py, pleas see the detail in files.
+The SA-based heuristic algorithm is implemented in heuristic.py, pleas see the details in [file](./herutistic.py).
 <!---
 
 

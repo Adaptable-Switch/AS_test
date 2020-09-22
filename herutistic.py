@@ -58,76 +58,76 @@ realload = [5297,13160,6698,4638,3588,2584,3959,3652,7981,3543,2657,2458,2467,51
 
 # Generate a load set for testing.
 def gen_random_load():
-	load = []
-	
-	for i in range(num_id):
-		a = int(random.random() * 1000)
-		load.append(a)
-		
-	for j in load:
-		print j,",",
-	print "-------------"
-	load.sort(reverse=True)
-	for j in load:
-		print j,",",
+  load = []
+  
+  for i in range(num_id):
+    a = int(random.random() * 1000)
+    load.append(a)
+    
+  for j in load:
+    print j,",",
+  print "-------------"
+  load.sort(reverse=True)
+  for j in load:
+    print j,",",
 
 # Calcutaing the traffic balancing index, if err is smaller, the more balance.
 def J(Y0):
-	l = len(Y0)
-	a = []
-	suma = []
-	
-	for i in range(l):
-		a.append(Y0[i])
-		suma.append(sum(a[i]))
-	# print "J()",a,b,c,d
-	avg = (sum(suma))/l
-	err = 0
-	
-	for i in range(l):
-		err = err + (avg - suma[i])*(avg - suma[i])
-	err = err
-	# err = (avg - a)*(avg - a) + (avg - b)*(avg - b) + (avg - c)*(avg - c) + (avg - d)*(avg - d)
-	# print "==",a,b,c,d
-	# print err
-	return err
+  l = len(Y0)
+  a = []
+  suma = []
+  
+  for i in range(l):
+    a.append(Y0[i])
+    suma.append(sum(a[i]))
+  # print "J()",a,b,c,d
+  avg = (sum(suma))/l
+  err = 0
+  
+  for i in range(l):
+    err = err + (avg - suma[i])*(avg - suma[i])
+  err = err
+  # err = (avg - a)*(avg - a) + (avg - b)*(avg - b) + (avg - c)*(avg - c) + (avg - d)*(avg - d)
+  # print "==",a,b,c,d
+  # print err
+  return err
 
 def find_min_list(intputlist):
-	l = len(intputlist)
-	flag = 1
-	out = 0
-	
-	for i in range(l):
-		if flag:
-			minn =i
-			flag = 0
-		if intputlist[i] < minn:
-			minn = intputlist[i]
-			out = i
-	return out
+  l = len(intputlist)
+  flag = 1
+  out = 0
+  
+  for i in range(l):
+    if flag:
+      minn =i
+      flag = 0
+    if intputlist[i] < minn:
+      minn = intputlist[i]
+      out = i
+  return out
 
 ########################################## heuristic: init
 def init_real():
 
-	for i in load:
-		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
-			temp = Pmax
-			N = 0      # N is to indecate the number of replica.
-			while True:
-				N = N + 1
-				temp = temp / N
-				if temp < Pmax:
-					break
-				else:
-					temp = temp * N
-		num_last_list = len(load)
-		traffic = load[i] / N
-		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
-		for j in range(N):
-			load.append(traffic)
-			diction.append(num_last_list)
-			num_last_list = num_last_list + 1
-			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+  for i in load:
+    if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+      temp = Pmax
+      N = 0      # N is to indecate the number of replica.
+      while True:
+        N = N + 1
+        temp = temp / N
+        if temp < Pmax:
+          break
+        else:
+          temp = temp * N
+      num_last_list = len(load)
+      traffic = i / N
+      diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+      for j in range(N):
+        load.append(traffic)
+        diction.append(num_last_list)
+        num_last_list = num_last_list + 1
+        duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
 
   a = []
   summ = []
@@ -145,25 +145,25 @@ def init_real():
 
 def init_without_opt(num_pipeline):
 
-		for i in load:
-		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
-			temp = Pmax
-			N = 0      # N is to indecate the number of replica.
-			while True:
-				N = N + 1
-				temp = temp / N
-				if temp < Pmax:
-					break
-				else:
-					temp = temp * N
-		num_last_list = len(load)
-		traffic = load[i] / N
-		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
-		for j in range(N):
-			load.append(traffic)
-			diction.append(num_last_list)
-			num_last_list = num_last_list + 1
-			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+  for i in load:
+    if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+      temp = Pmax
+      N = 0      # N is to indecate the number of replica.
+      while True:
+        N = N + 1
+        temp = temp / N
+        if temp < Pmax:
+          break
+        else:
+          temp = temp * N
+      num_last_list = len(load)
+      traffic = i / N
+      diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+      for j in range(N):
+        load.append(traffic)
+        diction.append(num_last_list)
+        num_last_list = num_last_list + 1
+        duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
   a = []
 
   each = num_id / num_pipeline#64
@@ -174,25 +174,25 @@ def init_without_opt(num_pipeline):
 
 def init_without_opt_real(num_pipeline):
 
-		for i in load:
-		if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
-			temp = Pmax
-			N = 0      # N is to indecate the number of replica.
-			while True:
-				N = N + 1
-				temp = temp / N
-				if temp < Pmax:
-					break
-				else:
-					temp = temp * N
-		num_last_list = len(load)
-		traffic = load[i] / N
-		diction = [] #the replica information, it will be stored in the 'replica' diction data structure
-		for j in range(N):
-			load.append(traffic)
-			diction.append(num_last_list)
-			num_last_list = num_last_list + 1
-			duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
+  for i in load:
+    if i > Pmax: # to find if the flow group should be duplicated into multiple processing pipeline.
+      temp = Pmax
+      N = 0      # N is to indecate the number of replica.
+      while True:
+        N = N + 1
+        temp = temp / N
+        if temp < Pmax:
+          break
+        else:
+          temp = temp * N
+      num_last_list = len(load)
+      traffic = i / N
+      diction = [] #the replica information, it will be stored in the 'replica' diction data structure
+      for j in range(N):
+        load.append(traffic)
+        diction.append(num_last_list)
+        num_last_list = num_last_list + 1
+        duplica[i] = diction #the replica information, stored in the 'replica' diction data structure
   a = []
   each = num_id / num_pipeline#64
   # print "len real",len(realload)
@@ -203,135 +203,120 @@ def init_without_opt_real(num_pipeline):
 
 
 def switch(a,ai,b,bi):
-	tmp = a[ai]
-	a[ai] = b[bi]
-	b[bi] = tmp
-	return a,b
-		
-def get_2_groupID(num_pipeline):
-	each = num_id / num_pipeline#64
-	a = int(random.random()*num_pipeline)
-	b = int(random.random()*num_pipeline)
-	while a == b:
-		b = int(random.random()*num_pipeline)
-	ai = int(random.random()*each)
-	bi = int(random.random()*each)
-	return a,ai,b,bi
+  tmp = a[ai]
+  a[ai] = b[bi]
+  b[bi] = tmp
+  return a,b
+    
+def get_2_groupID(num_pipeline,Y):
+  sum_k = []
+  sum_k_revers = []
+  sum_k_1 = []
+  sum_k_1_revers = []
+  sum_k_1_cdf = []
+  sum_k_1_cdf_revers = []
+
+  for i in Y:
+    sum_k.append(sum(i))
+
+  sum_total = sum(sum_k)
+  # The more workload an execution engine has, the larger probability it gets a flow group moving out; 
+  # while a destination execution engine for the moving group is selected with probability that is inversely proportional to the workload of the execution engine.
+  #
+  for i in sum_k:
+    sum_k_1.append(i*1.0/sum_total)
+    sum_k_revers.append(1.0/i)
+  sum_total_revers = sum(sum_k_revers)
+
+  for i in sum_k_revers:
+    sum_k_1_revers.append(i/sum_total_revers)
+
+  cdfsum = 0
+  cdfsum_revers = 0
+  for i in sum_k_1:
+    cdfsum += i
+    sum_k_1_cdf.append(cdfsum)
+  sum_k_1_cdf[-1] = 1
+
+  for i in sum_k_1_revers:
+    cdfsum_revers += i
+    sum_k_1_cdf_revers.append(cdfsum_revers)
+  sum_k_1_cdf_revers[-1] = 1
+  
+  
+  # generating the number of source EE, according to the probability LIST "sum_k_1_cdf"
+  random_result_source = random.random()
+  remove_source = -1
+  for i in sum_k_1_cdf:
+    remove_source += 1
+    if random_result_source < i:
+      break
+  
+  # generating the number of destination EE, according to the probability LIST "sum_k_1_cdf_revers"
+  random_result_destination = random.random()
+  remove_destination = -1
+  for i in sum_k_1_cdf_revers:
+    remove_destination += 1
+    if random_result_destination < i:
+      break
+  
+  if remove_destination == remove_source:
+    remove_destination += 1
+    if remove_destination == len(Y):
+      remove_destination = 0
+
+  each = num_id / num_pipeline#
+
+  item_in_source = int(random.random()*each)
+  item_in_dest = int(random.random()*each)
+
+  return remove_source,item_in_source,remove_destination,item_in_dest
+
 
 ##########################################     heuristic: process.
 ##########################################     input: 1) the number of paralleled Execut Engines.
 def run(num_pipeline,errbar):#############     input: 2) the balancing tolerance, for example 10% or 5%.
-	Y = init_without_opt_real(num_pipeline)#     output:1) the table allocation solution.
-	Yp1 = copy.deepcopy(Y)                 #           :2) the running time durition, indecated in seconds.
-	jmin = 9999999999999
-	times = 0
-	err = 1
-	timerstart = time.clock()
-	timernow = time.clock()
-	running_time = timernow - timerstart
-	average = sum(realload)/num_pipeline
-	
-	while err > errbar and running_time < TIME_LIMIT:
-		timernow = time.clock()
-		running_time = timernow - timerstart
-		times = times + 1
-		a,ai,b,bi = get_2_groupID(num_pipeline)
-		# print "a,ai,b,bi",a,ai,b,bi
-		l = num_pipeline
-		switch(Yp1[a],ai,Yp1[b],bi)
-		j0 = J(Y)
-		j1 = J(Yp1)
-		de = j0 - j1
-		if de > 0  or ptemp < Prandomwalk:
-			Y = copy.deepcopy(Yp1)
-			jmin = j1
-			sum1 = []
-			for i in range(l):
-				sum1.append(sum(Yp1[i]))
-			err = []
-			# print sum1,average
-			for i in range(l):
-				err.append(abs((sum1[i] - average)*1.0/average))
-			err = max(err)
-			# print "jmin =",jmin,"de",de, "times",times,"err",err*100,"%".
-			pass
-	# print times, err*100
-	return times, err*100, running_time
+  Y = init_without_opt_real(num_pipeline)#     output:1) the table allocation solution.
+  Yp1 = copy.deepcopy(Y)                 #           :2) the running time durition, indecated in seconds.
+  jmin = 9999999999999
+  times = 0
+  err = 1
+  timerstart = time.clock()
+  timernow = time.clock()
+  running_time = timernow - timerstart
+  average = sum(realload)/num_pipeline
+  
+  while err > errbar and running_time < TIME_LIMIT:
+    timernow = time.clock()
+    running_time = timernow - timerstart
+    times = times + 1
+    a,ai,b,bi = get_2_groupID(num_pipeline, Yp1)
+    # print "a,ai,b,bi",a,ai,b,bi
+    l = num_pipeline
+    switch(Yp1[a],ai,Yp1[b],bi)
+    j0 = J(Y)
+    j1 = J(Yp1)
+    de = j0 - j1
+    ptemp = random.random()
+    if de > 0  or ptemp < Prandomwalk:
+      Y = copy.deepcopy(Yp1)
+      jmin = j1
+      sum1 = []
+      for i in range(l):
+        sum1.append(sum(Yp1[i]))
+      err = []
+      # print sum1,average
+      for i in range(l):
+        err.append(abs((sum1[i] - average)*1.0/average))
+      err = max(err)
+      # print "jmin =",jmin,"de",de, "times",times,"err",err*100,"%".
+      pass
+  # print times, err*100
+  return times, err*100, running_time
 ##########################################     heuristic: process.
 
-##########################################     The auto testing for different set of errbar.
-result = []
-for j in [4,5,6,7,8]:
-	result.append([])
-	# print "j =",j
-	for i in range(1000):#1000
-		times, err, running_time = run(j,0.03)
-		tmp = str(times) + "," + str(err)
-		print "tmp",tmp
-		result[j-4].append(tmp)
-for j in range(len(result[0])):
-	for k in range(len(result)):
-		print result[k][j],",",
-	print
 
-result = []
-for j in [4,5,6,7,8]:
-	result.append([])
-	# print "j =",j
-	for i in range(1000):
-		times, err, running_time = run(j,0.05)
-		tmp = str(times) + "," + str(err)
-		# print "tmp",tmp
-		result[j-4].append(tmp)
-for j in range(len(result[0])):
-	for k in range(len(result)):
-		print result[k][j],",",
-	print
+# example test, 256 flow groups, 8 excution engines
 
-result = []
-for j in [4,5,6,7,8]:
-	result.append([])
-	# print "j =",j
-	for i in range(1000):
-		times, err, running_time = run(j,0.07)
-		tmp = str(times) + "," + str(err)
-		# print "tmp",tmp
-		result[j-4].append(tmp)
-for j in range(len(result[0])):
-	for k in range(len(result)):
-		print result[k][j],",",
-	print
-
-result = []
-for j in [4,5,6,7,8]:
-	result.append([])
-	# print "j =",j
-	for i in range(1000):
-		times, err, running_time = run(j,0.09)
-		tmp = str(times) + "," + str(err)
-		# print "tmp",tmp
-		result[j-4].append(tmp)
-for j in range(len(result[0])):
-	for k in range(len(result)):
-		print result[k][j],",",
-	print
-
-
-##########################################     The auto testing for different set of errbar.
-
-##########################################     calculating time of 50%, 95% and 100% confidence.
-for j in range(15):                     
-                                        ##     K = 16, TIME_LIMIT = 20 seconds, errbar = 13%.
-  timer = []
-  for i in range(100):                  ##     do SA algorithm 100 times
-    
-    times, err, running_time = run(16,0.13)
-    timer.append(running_time)
-
-    # print times, err, running_time
-  timer.sort()
-
-  # print timer
-  print timer[49],timer[94],timer[99]
-
-##########################################     
+times, err, running_time = run(8,0.05)
+print "number of iter manner work round:", times,"| J(w):",err, "| Running Time:",running_time

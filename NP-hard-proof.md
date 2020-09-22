@@ -34,7 +34,7 @@ If more than one extended sub rules be allocated into the same ![](https://rende
  
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=BOOL(i,j)) =1 ![](https://render.githubusercontent.com/render/math?math=j\in{Q_i}) or 0 ![](https://render.githubusercontent.com/render/math?math=j\notin{Q_i})
   
-&emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=G\left[j\right]=\sum ^{k}_{i=1}BOOL)(i,j)=![](https://render.githubusercontent.com/render/math?math=1(j\in{S}))
+&emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=G\left[j\right]=\sum^{k}_{i=1}BOOL)(i,j)=![](https://render.githubusercontent.com/render/math?math=1(j\in{S}))
    
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=\sum_{j\in{S}}G\left[i\right]=2^{P}(j\in{S}))
    

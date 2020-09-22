@@ -30,7 +30,7 @@ If more than one extended sub rules be allocated into the same ![](https://rende
 
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=Q_k\subseteq{S},k\in[1,k],\cup{Q_k}=S,N\leq\sum^{K}_{k=1}C_k\leq{C_0}\cdot{R_d})
  
-&emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=||\dfrac{Q_i}{C_{ki}}|-|\dfrac{Q_j}{C_{kj}}||\cdot{100 percent\leq{T}}(i,j,ki,kj\in[1,k]))
+&emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=||\dfrac{Q_i}{C_{ki}}|-|\dfrac{Q_j}{C_{kj}}||\cdot{100percent\leq{T}}(i,j,ki,kj\in[1,k]))
  
 &emsp;&emsp; ![](https://render.githubusercontent.com/render/math?math=BOOL(i,j)) =1 ![](https://render.githubusercontent.com/render/math?math=j\in{Q_i}) or 0 ![](https://render.githubusercontent.com/render/math?math=j\notin{Q_i})
   

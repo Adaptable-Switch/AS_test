@@ -47,7 +47,7 @@ c) Randomly distribute the ![](https://render.githubusercontent.com/render/math?
 
 ### 2.2.Generate new candidate solution in the search area.
 
-A solution is a flow group allocation. To generate new neiboring solution, after the init step of the algorithm, it randomly select a flow group from any one EE(i) to another EE(j).
+A solution is a flow group allocation. To generate new neiboring solution, after the init step of the algorithm, it randomly select a flow group from any one EE(i) to another EE(j). The more workload an execution engine has, the larger probability it gets a flow group moving out; while a destination execution engine for the moving group is selected with probability that is inversely proportional to the workload of the execution engine.
 
 ### 2.3.The evaluation function in SA.
 

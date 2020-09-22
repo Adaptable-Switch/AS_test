@@ -23,6 +23,10 @@ Use cases are implemented in files: (1)statefull.v (2)ndp48.v (3)ndpqs.v (4)meas
 
 ## 2.Software Design.
 
+The SA-based heuristic algorithm is implemented in heuristic.py, pleas see the detail in files.
+<!---
+
+
 The SA-based heuristic algorithm is following the processing graph below.
 
 ![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/Saprocess2.jpg)
@@ -60,4 +64,4 @@ The total traffic of Execution Engine(i) ![](https://render.githubusercontent.co
 
 The evaluation function ![](https://render.githubusercontent.com/render/math?math=J(w)=\\sum^{K}_{i=1}(D^{2}_{i}-D^{2}_{average})^{\dfrac{1}{2}}).
 this equation represents the traffic load balancing of the table allocation.
-
+-->

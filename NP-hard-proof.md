@@ -61,7 +61,7 @@ We say that a language ![](https://render.githubusercontent.com/render/math?math
 
 #### The Average-Division problem
 
-Given a finite set ![](https://render.githubusercontent.com/render/math?math=S=\left\{1,2,\ldots,n\right\}), and the weight function ![](https://render.githubusercontent.com/render/math?math=w:S\rightarrow\mathbb{Z}), we ask whether there is a subset ![](https://render.githubusercontent.com/render/math?math=S'\subseteq{S}) can satisfy:
+Given a finite set ![](https://render.githubusercontent.com/render/math?math=S={1,2,\ldots,n}), and the weight function ![](https://render.githubusercontent.com/render/math?math=w:S\rightarrow\mathbb{Z}), we ask whether there is a subset ![](https://render.githubusercontent.com/render/math?math=S'\subseteq{S}) can satisfy:
 
 ![](https://render.githubusercontent.com/render/math?math=\sum_{X\in{S'}}w(x))=![](https://render.githubusercontent.com/render/math?math=\dfrac{1}{2}\sum_{X\in{S}}w(x))
 

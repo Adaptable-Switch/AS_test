@@ -141,7 +141,7 @@ We now show that AVG_DIV ![](https://render.githubusercontent.com/render/math?ma
 
 #### Let:
 
-![](https://render.githubusercontent.com/render/math?math=S=S_1,D\_id[i]= w(i)) ![](https://render.githubusercontent.com/render/math?math=(i\in{S_1})),![](https://render.githubusercontent.com/render/math?math=K=2,R_d=1,T=\infty,q_1=0,V_k=0,C_k=\dfrac{C_{0}}{K},q_2=C_0),because of ![](https://render.githubusercontent.com/render/math?math=T,q_2), the restriction(2,8) is now released, and using restriction (4,5), we get that ![](https://render.githubusercontent.com/render/math?math=Q_1\cap{Q_2}=\phi) and the restrictions are re-constructed as follow:
+![](https://render.githubusercontent.com/render/math?math=S=S_1,D\_id[i]=w(i)) ![](https://render.githubusercontent.com/render/math?math=(i\in{S_1})),![](https://render.githubusercontent.com/render/math?math=K=2,R_d=1,T=\infty,q_1=0,V_k=0,C_k=\dfrac{C_{0}}{K},q_2=C_0),because of ![](https://render.githubusercontent.com/render/math?math=T,q_2), the restriction(2,8) is now released, and using restriction (4,5), we get that ![](https://render.githubusercontent.com/render/math?math=Q_1\cap{Q_2}=\phi) and the restrictions are re-constructed as follow:
 
 &emsp;&emsp;&emsp;&emsp;![](https://render.githubusercontent.com/render/math?math=Q_1\cup{Q_2}=S_1)&emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; (I)
 

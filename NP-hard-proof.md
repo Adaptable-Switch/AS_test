@@ -2,7 +2,7 @@
 
 ## Terminology and Definition:
 
-![](https://render.githubusercontent.com/render/math?math=ID)
+
 
 For one Basic Processing Unit(BPU) and multiple execution engines(EEs) in the Adaptable Switch(AS) design, let ![](https://render.githubusercontent.com/render/math?math=N_0) be the number of flow entries in the original Action function that only contains single EE; ![](https://render.githubusercontent.com/render/math?math=C_0) be the original capacity of the flow table; ![](https://render.githubusercontent.com/render/math?math=R_d) be the resource redundancy of the flow table, ![](https://render.githubusercontent.com/render/math?math=K) be the number of paralleled EEs; ![](https://render.githubusercontent.com/render/math?math=C_k) be the capacity of each sub-table of EE, where ![](https://render.githubusercontent.com/render/math?math=k) is from 1 to ![](https://render.githubusercontent.com/render/math?math=K); Partition number ![](https://render.githubusercontent.com/render/math?math=ID) is the result of  ![](https://render.githubusercontent.com/render/math?math=HASH()) function, ![](https://render.githubusercontent.com/render/math?math=J=HASH)(packet header), where ![](https://render.githubusercontent.com/render/math?math=j) is the value space of ![](https://render.githubusercontent.com/render/math?math=ID).
 
@@ -50,7 +50,39 @@ If more than one extended sub rules be allocated into the same ![](https://rende
    
 
 
-![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/IMG_5837.PNG)
+## Proof
+We aim at proofing that the Load-Balance-Based Table Division problem(LBBTD) is an NP-hard problem. We first introduce the Average-Division problem that is a classic NP-Complete problem, and then, we demonstrate that the LBBTD problem is a NP-hard problem by showing the reduction from the Average-Division problem to the LBBTD problem.
+
+####  Terminology 
+
+
+
+We say that a language ![](https://render.githubusercontent.com/render/math?math=L_1) is polynomial-time reducible to a language ![](https://render.githubusercontent.com/render/math?math=L_2), written ![](https://render.githubusercontent.com/render/math?math=L_1\leq_p{L_2}), if there exists a polynomial-time computable function ![](https://render.githubusercontent.com/render/math?math=f:\{0,1\}^*\rightarrow\{0,1\}^*) such that for all ![](https://render.githubusercontent.com/render/math?math=x\in \left\{ 0,1\right\} ^{\ast }), ![](https://render.githubusercontent.com/render/math?math=x\in{L}_{1}) ![](https://render.githubusercontent.com/render/math?math=\Leftrightarrow{f})  ![](https://render.githubusercontent.com/render/math?math=(x)) ![](https://render.githubusercontent.com/render/math?math=\in{L}_{2}).
+
+#### The Average-Division problem
+
+Given a finite set ![](https://render.githubusercontent.com/render/math?math=S=\left\{1,2,\ldots,n\right\}), and the weight function ![](https://render.githubusercontent.com/render/math?math=w:S\rightarrow\mathbb{Z}), we ask whether there is a subset ![](https://render.githubusercontent.com/render/math?math=S'\subseteq{S}) can satisfy:
+
+![](https://render.githubusercontent.com/render/math?math=\sum_{X\in{S'}}w(x))=![](https://render.githubusercontent.com/render/math?math=\dfrac{1}{2}\sum_{X\in{S}}w(x))
+
+We define the average division problem as a language:
+
+#### AVG_DIV:=
+
+{ ![](https://render.githubusercontent.com/render/math?math=\langle{S,w}\rangle:S\subset\mathbb{N}),
+
+&emsp;&emsp;&emsp;&emsp;![](https://render.githubusercontent.com/render/math?math=w) is function from ![](https://render.githubusercontent.com/render/math?math=\mathbb{N}\rightarrow\mathbb{Z}),
+
+&emsp;&emsp;&emsp;&emsp;there exists a subset ![](https://render.githubusercontent.com/render/math?math=S'\subseteq{S}) such that 
+
+
+&emsp;&emsp;&emsp;&emsp;![](https://render.githubusercontent.com/render/math?math=\sum_{X\in{S'}}w(x)) = ![](https://render.githubusercontent.com/render/math?math=\dfrac{1}{2}\sum_{X\in{S}}) ![](https://render.githubusercontent.com/render/math?math=w(x))&emsp;}
+
+#### Lemma A:
+
+The average division problem is NP-hard.
+
+#### Theorem 1:
 
 ![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/IMG_5838.PNG)
 

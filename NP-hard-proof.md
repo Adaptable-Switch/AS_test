@@ -57,7 +57,7 @@ We aim at proofing that the Load-Balance-Based Table Division problem(LBBTD) is 
 
 
 
-We say that a language ![](https://render.githubusercontent.com/render/math?math=L_1) is polynomial-time reducible to a language ![](https://render.githubusercontent.com/render/math?math=L_2), written ![](https://render.githubusercontent.com/render/math?math=L_1\leq_p{L_2}), if there exists a polynomial-time computable function ![](https://render.githubusercontent.com/render/math?math=f:\{0,1\}^*\rightarrow\{0,1\}^*) such that for all ![](https://render.githubusercontent.com/render/math?math=x\in \left\{ 0,1\right\} ^{\ast }), ![](https://render.githubusercontent.com/render/math?math=x\in{L}_{1}) ![](https://render.githubusercontent.com/render/math?math=\Leftrightarrow{f})  ![](https://render.githubusercontent.com/render/math?math=(x)) ![](https://render.githubusercontent.com/render/math?math=\in{L}_{2}).
+We say that a language ![](https://render.githubusercontent.com/render/math?math=L_1) is polynomial-time reducible to a language ![](https://render.githubusercontent.com/render/math?math=L_2), written ![](https://render.githubusercontent.com/render/math?math=L_1\leq_p{L_2}), if there exists a polynomial-time computable function ![](https://render.githubusercontent.com/render/math?math=f:\{0,1\}^*\rightarrow\{0,1\}^*) such that for all ![](https://render.githubusercontent.com/render/math?math=x\in\left\{0,1\right\}^{\ast}), ![](https://render.githubusercontent.com/render/math?math=x\in{L}_{1}) ![](https://render.githubusercontent.com/render/math?math=\Leftrightarrow{f})  ![](https://render.githubusercontent.com/render/math?math=(x)) ![](https://render.githubusercontent.com/render/math?math=\in{L}_{2}).
 
 #### The Average-Division problem
 

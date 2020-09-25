@@ -16,7 +16,7 @@ TIME_LIMIT = 20 #limit heuristic algorithm running time to TIME_LIMIT seconds
 Pmax = 5000 #maximum processing performance of one EE, this can be re-defined by any end users, according to the hardware spec.
 
 # The local search looks for a more balanced solution by searching the allocation of flows in each group, within a bit more of 
-# the neighboring space, while the global search allows \textcolor{red}{researching} with a random walk in the entire space with 
+# the neighboring space, while the global search allows searching with a random walk in the entire space with 
 # a small probability, in order to avoid local search trap.
 Prandomwalk = 0.000001 
 

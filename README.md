@@ -4,7 +4,7 @@
 
 ## 1.Hardware Design.
 
-In HDL folder, it's hardware design VHDL code files, as figure below shown.
+In [hdl](https://github.com/Adaptable-Switch/AS_test/tree/master/hdl) folder, it's hardware design VHDL code files, as figure below shown.
 
 ![image](https://github.com/Adaptable-Switch/AS_test/blob/master/figs/bpu5.png)
 

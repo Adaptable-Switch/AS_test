@@ -312,7 +312,8 @@ def run(num_pipeline,errbar):#############     input: 2) the balancing tolerance
       # print "jmin =",jmin,"de",de, "times",times,"err",err*100,"%".
       pass
   # print times, err*100
-  return times, err*100, running_time
+  print Yp1                                    # output:1) the table allocation solution.
+  return times, err*100, running_time          # 2) the running time durition, indecated in seconds.
 ##########################################     heuristic: process.
 
 
